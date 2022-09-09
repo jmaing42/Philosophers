@@ -6,7 +6,7 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 06:46:19 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/09/09 15:47:15 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/09/09 16:15:27 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,12 @@ void	*routine(t_per_philosopher *per_philosopher)
 	}
 	else
 	{
-		if (per_philosopher->index == 1
-			&& wrap_usleep(unit(per_philosopher->philo)))
-			return (set_error(per_philosopher));
+		if (per_philosopher->index == 1)
+		{
+			if (wrap_usleep(unit(per_philosopher->philo)))
+				return (set_error(per_philosopher));
+			per_philosopher->skip_turn = 0;
+		}
 		if (per_philosopher->index % 2 && initial_wait(per_philosopher))
 			return (set_error(per_philosopher));
 		while (1)
