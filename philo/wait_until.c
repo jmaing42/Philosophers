@@ -6,11 +6,13 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 13:04:06 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/09/09 15:57:45 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/09/10 00:54:02 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+#include <unistd.h>
 
 t_err	wait_until(struct timeval until)
 {
@@ -19,7 +21,7 @@ t_err	wait_until(struct timeval until)
 	if (gettimeofday(&now, NULL))
 		return (true);
 	while (is_bigger_than(now, until))
-		if (wrap_usleep(z(sub(until, now)) * 8 / 10))
+		if (usleep(z(sub(until, now)) * 8 / 10))
 			return (true);
 	return (false);
 }

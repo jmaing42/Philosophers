@@ -6,7 +6,7 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 06:46:19 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/09/09 18:22:36 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/09/10 00:53:38 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static t_err	initial_wait(t_per_philosopher *per_philosopher)
 {
 	per_philosopher->skip_turn = per_philosopher->skip_turn
 		+ per_philosopher->philo->number_of_philosophers - 1;
-	return (wrap_usleep(unit(per_philosopher->philo) * 1000));
+	return (usleep(unit(per_philosopher->philo) * 1000));
 }
 
 static t_err	even_routine(t_per_philosopher *self)
@@ -54,7 +54,7 @@ static t_err	odd_routine(t_per_philosopher *self)
 	if (self->skip_turn == 0)
 	{
 		self->skip_turn = philo->number_of_philosophers - 1;
-		return (wrap_usleep(unit(philo) * 1000));
+		return (usleep(unit(philo) * 1000));
 	}
 	self->skip_turn = (self->skip_turn + philo->number_of_philosophers - 2)
 		% philo->number_of_philosophers;
@@ -82,7 +82,7 @@ void	*routine(t_per_philosopher *per_philosopher)
 	{
 		if (per_philosopher->index == 1)
 		{
-			if (wrap_usleep(unit(per_philosopher->philo)))
+			if (usleep(unit(per_philosopher->philo)))
 				return (set_error(per_philosopher));
 			per_philosopher->skip_turn = 0;
 		}

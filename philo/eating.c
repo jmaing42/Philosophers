@@ -6,13 +6,14 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 18:18:42 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/09/09 18:35:01 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/09/10 00:53:53 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
 #include <stdio.h>
+#include <unistd.h>
 #include <pthread.h>
 
 t_err	eating(t_per_philosopher *self)
@@ -37,7 +38,7 @@ t_err	eating(t_per_philosopher *self)
 		self->number_of_rest_times_must_eat--;
 	if (
 		pthread_mutex_unlock(&self->number_of_rest_times_must_eat_mutex)
-		|| wrap_usleep(philo->time_to_eat * 1000)
+		|| usleep(philo->time_to_eat * 1000)
 	)
 		return (true);
 	return (false);

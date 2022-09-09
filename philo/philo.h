@@ -6,7 +6,7 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 01:38:06 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/09/09 18:22:40 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/09/10 00:53:21 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ t_err			end(t_philo *self);
 
 useconds_t		unit(t_philo *philo);
 t_err			wait_until(struct timeval until);
-t_err			wrap_usleep(useconds_t microseconds);
 
 void			*routine(t_per_philosopher *per_philosopher);
 t_err			taken(t_per_philosopher *self);
