@@ -1,7 +1,7 @@
 .POSIX:
 # this file is NOT generated
 
-OBJS := main.o init.o join.o routine.o even_routine.o odd_routine.o unit.o wait_until.o wrap_usleep.o tv.o ft_strict_atoi.o
+OBJS := main.o init.o monitor.o end.o routine.o taken.o eating.o sleeping.o thinking.o unit.o wait_until.o wrap_usleep.o tv.o ft_strict_atoi.o
 
 NAME = philo
 

@@ -6,7 +6,7 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 01:38:06 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/09/09 16:54:01 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/09/09 18:22:40 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,10 @@ t_err			wait_until(struct timeval until);
 t_err			wrap_usleep(useconds_t microseconds);
 
 void			*routine(t_per_philosopher *per_philosopher);
-t_err			even_routine(t_per_philosopher *per_philosopher);
-t_err			odd_routine(t_per_philosopher *per_philosopher);
+t_err			taken(t_per_philosopher *self);
+t_err			eating(t_per_philosopher *self);
+t_err			sleeping(t_per_philosopher *self);
+t_err			thinking(t_per_philosopher *self, struct timeval start);
 
 struct timeval	tv(size_t z);
 struct timeval	add(struct timeval lhs, struct timeval rhs);
