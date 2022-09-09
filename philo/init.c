@@ -6,7 +6,7 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 01:44:54 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/09/09 17:47:11 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/09/09 17:55:34 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,28 +22,21 @@ t_err	start_threads(t_philo *out)
 	size_t			i;
 	const size_t	len = out->number_of_philosophers;
 
-	if (out->number_of_philosophers % 2 == 0)
+	i = -1;
+	while (++i < len / 2)
 	{
-		i = -1;
-		while (++i < out->number_of_philosophers / 2)
-		{
-			if (pthread_create(&out->philosopher[i].philosopher, NULL,
-					(void *(*)(void *))routine, &out->philosopher[i])
-				|| pthread_create(&out->philosopher[len - 1 - i].philosopher,
-					NULL, (void *(*)(void *))routine,
-					&out->philosopher[len - 1 - i]))
-				return (true);
-		}
+		if (pthread_create(&out->philosopher[i].philosopher, NULL,
+				(void *(*)(void *))routine, &out->philosopher[i])
+			|| pthread_create(&out->philosopher[len - 1 - i].philosopher,
+				NULL, (void *(*)(void *))routine,
+				&out->philosopher[len - 1 - i]))
+			return (true);
 	}
-	else
-	{
-		i = -1;
-		while (++i < out->number_of_philosophers)
-			if (pthread_create(&out->philosopher[i].philosopher, NULL,
-					(void *(*)(void *))routine, &out->philosopher[i]))
-				return (true);
-	}
-	return (false);
+	return (
+		len % 2 == 1
+		&& pthread_create(&out->philosopher[i].philosopher, NULL,
+			(void *(*)(void *))routine, &out->philosopher[i])
+	);
 }
 
 t_err	init_philosophers(t_philo *out)
