@@ -6,7 +6,7 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 11:58:46 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/09/09 13:31:38 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/09/09 15:46:50 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ t_err	odd_routine(t_per_philosopher *self)
 	if (self->skip_turn == 0)
 	{
 		self->skip_turn = philo->number_of_philosophers - 1;
-		return (usleep(unit(philo) * 1000));
+		return (wrap_usleep(unit(philo) * 1000));
 	}
 	self->skip_turn = (self->skip_turn + philo->number_of_philosophers - 2)
 		% philo->number_of_philosophers;
@@ -98,7 +98,7 @@ static t_err	eating(t_per_philosopher *self)
 			self->index
 		) < 0
 		|| pthread_mutex_unlock(&self->last_ate_mutex)
-		|| usleep(philo->time_to_eat * 1000)
+		|| wrap_usleep(philo->time_to_eat * 1000)
 	);
 }
 
@@ -122,7 +122,7 @@ static t_err	sleeping(t_per_philosopher *self)
 			(size_t)z(sub(now, philo->started)) / 1000,
 			self->index
 		) < 0
-		|| usleep(philo->time_to_sleep * 1000)
+		|| wrap_usleep(philo->time_to_sleep * 1000)
 	);
 }
 
