@@ -1,18 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philosopher.c                                      :+:      :+:    :+:   */
+/*   unit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/09 06:46:19 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/09/09 06:46:48 by Juyeong Maing    ###   ########.fr       */
+/*   Created: 2022/09/09 12:00:32 by Juyeong Maing     #+#    #+#             */
+/*   Updated: 2022/09/09 12:50:15 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	*philosopher(void *per_philosopher)
+#include <unistd.h>
+
+useconds_t	unit(t_philo *philo)
 {
-	//
+	useconds_t	result;
+
+	result = (philo->time_to_eat + philo->time_to_sleep + 1) / 2;
+	if (result < philo->time_to_eat)
+		result = philo->time_to_eat;
+	return (result);
 }
