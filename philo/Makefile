@@ -9,8 +9,8 @@ EXECUTABLE_TARGETS = $(NAME)
 
 OTHER_USEFUL_FILES = .editorconfig .gitignore
 
-LDFLAGS = -fsanitize=address
-CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g
+LDFLAGS =
+CFLAGS = -Wall -Wextra -Werror -O
 ARFLAGS = cr
 
 
