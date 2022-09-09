@@ -6,7 +6,7 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 16:54:22 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/09/09 17:26:11 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/09/09 18:36:15 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,10 @@ static t_err	check_count(t_philo *self)
 				&self->philosopher[i].number_of_rest_times_must_eat_mutex))
 			return (true);
 		if (all_ok)
-			return (end(self));
+		{
+			end(self);
+			return (true);
+		}
 	}
 	return (false);
 }
