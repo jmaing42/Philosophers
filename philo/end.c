@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   join.c                                             :+:      :+:    :+:   */
+/*   end.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 13:12:32 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/09/09 13:14:53 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/09/09 16:50:57 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,19 @@
 
 #include <pthread.h>
 
-t_err	join(t_philo *self)
+t_err	end(t_philo *self)
 {
 	size_t	i;
 
+	i = -1;
+	while (++i < self->number_of_philosophers)
+	{
+		if (pthread_mutex_lock(&self->philosopher[i].died_mutex))
+			return (true);
+		self->philosopher[i].died = true;
+		if (pthread_mutex_unlock(&self->philosopher[i].died_mutex))
+			return (true);
+	}
 	i = -1;
 	while (++i < self->number_of_philosophers)
 		if (pthread_join(self->philosopher[i].philosopher, NULL))
