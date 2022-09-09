@@ -6,7 +6,7 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 01:44:54 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/09/09 13:10:48 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/09/09 14:26:23 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,18 @@
 
 #include "ft_types.h"
 #include "ft_strict_atoi.h"
+
+t_err	start_threads(t_philo *out)
+{
+	size_t	i;
+
+	i = -1;
+	while (++i < out->number_of_philosophers)
+		if (pthread_create(&out->philosopher[i].philosopher, NULL,
+				(void *(*)(void *))routine, &out->philosopher[i]))
+			return (true);
+	return (false);
+}
 
 t_err	init_philosophers(t_philo *out)
 {
@@ -38,11 +50,10 @@ t_err	init_philosophers(t_philo *out)
 			|| pthread_mutex_init(&out->philosopher[i].last_ate_mutex, NULL)
 			|| pthread_mutex_init(&out->philosopher[i].fork, NULL)
 			|| gettimeofday(&out->philosopher[i].last_ate, NULL)
-			|| pthread_create(&out->philosopher[i].philosopher, NULL,
-				(void *(*)(void *))routine, &out->philosopher[i]))
+		)
 			return (true);
 	}
-	return (false);
+	return (start_threads(out));
 }
 
 t_err	init(int argc, char **argv, t_philo **out)
