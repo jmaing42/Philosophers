@@ -6,7 +6,7 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 01:44:54 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/09/09 12:50:31 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/09/09 13:10:48 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,10 @@ t_err	init(int argc, char **argv, t_philo **out)
 	if (ft_strict_atoi(argv[4], &tmp) || tmp <= 0)
 		return (true);
 	(*out)->time_to_sleep = tmp;
-	if (argc == 5 && (ft_strict_atoi(argv[5], &tmp) || tmp <= 0))
+	if (argc == 6 && (ft_strict_atoi(argv[5], &tmp) || tmp <= 0))
 		return (true);
 	(*out)->number_of_times_each_philosopher_must_eat = tmp;
-	if (argc != 5)
+	if (argc != 6)
 		(*out)->number_of_times_each_philosopher_must_eat = -1;
 	return (init_philosophers(*out));
 }

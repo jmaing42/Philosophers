@@ -6,7 +6,7 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 01:38:06 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/09/09 13:05:35 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/09/09 13:12:22 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ typedef struct s_philo
 }	t_philo;
 
 t_err			init(int argc, char **argv, t_philo **out);
+t_err			join(t_philo *self);
+
 useconds_t		unit(t_philo *philo);
 t_err			wait_until(struct timeval until);
 
