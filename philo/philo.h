@@ -6,7 +6,7 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 01:38:06 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/09/10 00:53:21 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/09/10 09:49:46 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,17 @@
 
 typedef struct s_per_philosopher
 {
-	pthread_t		philosopher;
-	pthread_mutex_t	fork;
-	volatile size_t	number_of_rest_times_must_eat;
-	struct s_philo	*philo;
-	size_t			index;
-	struct timeval	last_ate;
-	volatile bool	died;
-	pthread_mutex_t	number_of_rest_times_must_eat_mutex;
-	pthread_mutex_t	last_ate_mutex;
-	pthread_mutex_t	died_mutex;
-	size_t			skip_turn;
+	pthread_t				philosopher;
+	pthread_mutex_t			fork;
+	volatile size_t			number_of_rest_times_must_eat;
+	struct s_philo			*philo;
+	size_t					index;
+	volatile struct timeval	last_ate;
+	volatile bool			died;
+	pthread_mutex_t			number_of_rest_times_must_eat_mutex;
+	pthread_mutex_t			last_ate_mutex;
+	pthread_mutex_t			died_mutex;
+	size_t					skip_turn;
 }	t_per_philosopher;
 
 typedef struct s_philo
