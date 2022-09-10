@@ -6,7 +6,7 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 18:18:42 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/09/10 00:53:59 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/09/10 09:51:04 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ t_err	sleeping(t_per_philosopher *self)
 		|| printf(
 			"%zu %zu is sleeping\n",
 			(size_t)z(sub(now, philo->started)) / 1000,
-			self->index
+			self->index + 1
 		) < 0
 		|| usleep(philo->time_to_sleep * 1000)
 	);

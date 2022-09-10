@@ -6,7 +6,7 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 18:18:42 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/09/09 18:19:18 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/09/10 09:51:09 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ t_err	taken(t_per_philosopher *self)
 		|| printf(
 			"%zu %zu has taken a fork\n",
 			(size_t)z(sub(now, philo->started)) / 1000,
-			self->index)
+			self->index + 1)
 		< 0
 	);
 }

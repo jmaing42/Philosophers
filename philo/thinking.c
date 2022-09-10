@@ -6,7 +6,7 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 18:18:42 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/09/09 18:21:32 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/09/10 09:51:12 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ t_err	thinking(t_per_philosopher *self, struct timeval start)
 		|| printf(
 			"%zu %zu is thinking\n",
 			(size_t)z(sub(now, philo->started)) / 1000,
-			self->index
+			self->index + 1
 		) < 0
 		|| wait_until(add(start, tv(unit(philo) * 2)))
 	);

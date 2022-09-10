@@ -6,7 +6,7 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 16:54:22 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/09/09 18:36:15 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/09/10 09:50:57 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static t_err	check_die(t_philo *self)
 				now))
 		{
 			printf("%zu %zu is died\n",
-				(size_t)z(sub(now, self->started)) / 1000, i);
+				(size_t)z(sub(now, self->started)) / 1000, i + 1);
 			end(self);
 			return (true);
 		}
