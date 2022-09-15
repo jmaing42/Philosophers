@@ -6,7 +6,7 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 18:18:42 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/09/10 09:50:49 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/09/15 23:31:37 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,9 @@ t_err	eating(t_per_philosopher *self)
 		|| (self->index % 2 == 1 && pthread_mutex_lock(&next->fork))
 		|| pthread_mutex_lock(&self->died_mutex) || self->died
 		|| pthread_mutex_unlock(&self->died_mutex) || pthread_mutex_lock
-		(&self->last_ate_mutex) || gettimeofday(&self->last_ate, NULL)
-		|| printf("%zu %zu is eating\n", (size_t)
+		(&self->last_ate_mutex) || gettimeofday(
+			(struct timeval *)&self->last_ate, NULL) || printf(
+			"%zu %zu is eating\n", (size_t)
 			z(sub(self->last_ate, philo->started)) / 1000, self->index + 1) < 0
 		|| pthread_mutex_unlock(&self->last_ate_mutex) || pthread_mutex_lock(
 			&self->number_of_rest_times_must_eat_mutex))

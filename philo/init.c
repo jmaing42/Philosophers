@@ -6,7 +6,7 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 01:44:54 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/09/09 17:55:34 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/09/15 23:30:40 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,8 @@ t_err	init_philosophers(t_philo *out)
 			|| pthread_mutex_init(&out->philosopher[i].died_mutex, NULL)
 			|| pthread_mutex_init(&out->philosopher[i].last_ate_mutex, NULL)
 			|| pthread_mutex_init(&out->philosopher[i].fork, NULL)
-			|| gettimeofday(&out->philosopher[i].last_ate, NULL)
+			|| gettimeofday(
+				(struct timeval *)&out->philosopher[i].last_ate, NULL)
 		)
 			return (true);
 	}
